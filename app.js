@@ -11,7 +11,7 @@ const pool  = mysql.createPool({
     password : process.env.password,
     database : process.env.database,
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 50,
     queueLimit: 0
 });
 
@@ -50,15 +50,15 @@ class apiCollection {
         for (var i = 0 ; i < this.jsonData.symbols.length; i++) {
             if (this.jsonData.symbols[i].contractType === "PERPETUAL" && this.jsonData.symbols[i].status === "TRADING" && !previousTickers.includes(this.jsonData.symbols[i].symbol)) {
                 previousTickers.push(this.jsonData.symbols[i].symbol);
-                var symbol = this.jsonData.symbols[i].symbol;
-                var baseAsset = this.jsonData.symbols[i].baseAsset;
-                var quoteAsset = this.jsonData.symbols[i].quoteAsset;
-                var status = this.jsonData.symbols[i].status;
-                var sql = "INSERT INTO exchangeTickers (symbol,baseAsset,quoteAsset,listingStatus) VALUES (?,?,?,?)";
-                var values = [symbol, baseAsset, quoteAsset, status];
+                let symbol = this.jsonData.symbols[i].symbol;
+                let baseAsset = this.jsonData.symbols[i].baseAsset;
+                let quoteAsset = this.jsonData.symbols[i].quoteAsset;
+                let status = this.jsonData.symbols[i].status;
+                let sql = "INSERT INTO exchangeTickers (symbol,baseAsset,quoteAsset,listingStatus) VALUES (?,?,?,?)";
+                let values = [symbol, baseAsset, quoteAsset, status];
                 pool.query(sql, values, function (err, result) {
                     if (err) throw err;
-                    console.log("1 record inserted");
+                    console.log('found 1 New-listing ticker. Database records updated. (ticker: ' + symbol + ')');
                 });
             }
         }
@@ -68,10 +68,10 @@ class apiCollection {
             if (this.jsonData.symbols[i].contractType === "PERPETUAL" && this.jsonData.symbols[i].status === "SETTLING" && !deListedTicker.includes(this.jsonData.symbols[i].symbol)) {
                 deListedTicker.push(this.jsonData.symbols[i].symbol);
                 previousTickers.splice(previousTickers.indexOf(this.jsonData.symbols[i].symbol),1);
-                var symbol = this.jsonData.symbols[i].symbol;
-                var status = this.jsonData.symbols[i].status;
+                let symbol = this.jsonData.symbols[i].symbol;
+                let status = this.jsonData.symbols[i].status;
                 //Sql Prepared Statement
-                var sql = `UPDATE exchangetickers SET listingStatus= '${status}' WHERE symbol = '${symbol}'`;
+                let sql = `UPDATE exchangetickers SET listingStatus= '${status}' WHERE symbol = '${symbol}'`;
                 pool.query(sql, function (err, result) {
                     if (err) throw err;
                     // console.log("1 record inserted");
@@ -145,4 +145,4 @@ const apiKline = new apiCollection("https://api.binance.com/api/v3/klines?symbol
 const apiInterestRate = new apiCollection("https://fapi.binan");
 
 
-setInterval(fetchData,60000);
+setInterval(fetchData,10000);
