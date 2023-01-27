@@ -1,0 +1,63 @@
+PS C:\Users\vere8\Desktop\Web Development Project\09 Js practice\sqlTest> node app
+deListedTicker load from database.... ANCBUSD,AUCTIONBUSD,BTSUSDT,CVCUSDT,FTTBUSD,FTTUSDT,RAYUSDT,SCUSDT,SRMUSDT,TLMUSDT
+load from database.... 1000LUNCBUSD,1000LUNCUSDT,1000SHIBBUSD,1000SHIBUSDT,1000XECUSDT,1INCHUSDT,AAVEUSDT,ADABUSD,ADAUSDT,AGIXBUSD,ALGOUSDT,ALICEUSDT,ALPHAUSDT,AMBBUSD,ANKRUSDT,ANTUSDT,APEBUSD,APEUSDT,API3USDT,APTBUSD,APTUSDT,ARPAUSDT,ARUSDT,ATAUSDT,ATOMUSDT,AUDIOUSDT,AVAXBUSD,AVAXUSDT,AXSUSDT,BAKEUSDT,BALUSDT,BANDUSDT,BATUSDT,BCHUSDT,BELUSDT,BLUEBIRDUSDT,BLZUSDT,BNBBUSD,BNBUSDT,BNXUSDT,BTCBUSD,BTCDOMUSDT,BTCUSDT,C98USDT,CELOUSDT,CELRUSDT,CHRUSDT,CHZUSDT,COMPUSDT,COTIUSDT,CRVUSDT,CTKUSDT,CTSIUSDT,CVXBUSD,CVXUSDT,DARUSDT,DASHUSDT,DEFIUSDT,DENTUSDT,DGBUSDT,DODOBUSD,DOGEBUSD,DOGEUSDT,DOTBUSD,DOTUSDT,DUSKUSDT,DYDXUSDT,EGLDUSDT,ENJUSDT,ENSUSDT,EOSUSDT,ETCBUSD,ETCUSDT,ETHBUSD,ETHUSDT,FETUSDT,FILBUSD,FILUSDT,FLMUSDT,FLOWUSDT,FOOTBALLUSDT,FTMBUSD,FTMUSDT,FXSUSDT,GALABUSD,GALAUSDT,GALBUSD,GALUSDT,GMTBUSD,GMTUSDT,GRTUSDT,GTCUSDT,HBARUSDT,HNTUSDT,HOOKUSDT,HOTUSDT,ICPBUSD,ICPUSDT,ICXUSDT,IMXUSDT,INJUSDT,IOSTUSDT,IOTAUSDT,IOTXUSDT,JASMYUSDT,KAVAUSDT,KLAYUSDT,KNCUSDT,KSMUSDT,LDOBUSD,LDOUSDT,LEVERBUSD,LINAUSDT,LINKBUSD,LINKUSDT,LITUSDT,LPTUSDT,LRCUSDT,LTCBUSD,LTCUSDT,LUNA2BUSD,LUNA2USDT,MAGICUSDT,MANAUSDT,MASKUSDT,MATICBUSD,MATICUSDT,MKRUSDT,MTLUSDT,NEARBUSD,NEARUSDT,NEOUSDT,NKNUSDT,OCEANUSDT,OGNUSDT,OMGUSDT,ONEUSDT,ONTUSDT,OPUSDT,PEOPLEUSDT,PHBBUSD,QNTUSDT,QTUMUSDT,REEFUSDT,RENUSDT,RLCUSDT,ROSEUSDT,RSRUSDT,RUNEUSDT,RVNUSDT,SANDBUSD,SANDUSDT,SFPUSDT,SKLUSDT,SNXUSDT,SOLBUSD,SOLUSDT,SPELLUSDT,STGUSDT,STMXUSDT,STORJUSDT,SUSHIUSDT,SXPUSDT,THETAUSDT,TLMBUSD,TOMOUSDT,TRBUSDT,TRXBUSD,TRXUSDT,UNFIUSDT,UNIBUSD,UNIUSDT,VETUSDT,WAVESBUSD,WAVESUSDT,WOOUSDT,XEMUSDT,XLMUSDT,XMRUSDT,XRPBUSD,XRPUSDT,XTZUSDT,YFIUSDT,ZECUSDT,ZENUSDT,ZILUSDT,ZRXUSDT
+RoundCount + 0 2023/1/28 上午1:47:03
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 0 2023/1/28 上午1:47:03
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 0 2023/1/28 上午1:47:08
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 0 2023/1/28 上午1:47:13
+An Error occured. Retry after 5 seconds. Retry Counts: 3 Outer Round Counts: 0 2023/1/28 上午1:47:18
+RoundCount + 0 2023/1/28 上午1:47:23
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 0 2023/1/28 上午1:47:23
+Loop end ... exit
+You need to get json data first by calling getJson()
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 1 2023/1/28 上午1:47:28
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 1 2023/1/28 上午1:47:33
+An Error occured. Retry after 5 seconds. Retry Counts: 3 Outer Round Counts: 1 2023/1/28 上午1:47:38
+RoundCount + 1 2023/1/28 上午1:47:43
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 1 2023/1/28 上午1:47:43
+Loop end ... exit
+You need to get json data first by calling getJson()
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 2 2023/1/28 上午1:47:48
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 2 2023/1/28 上午1:47:53
+An Error occured. Retry after 5 seconds. Retry Counts: 3 Outer Round Counts: 2 2023/1/28 上午1:47:58
+RoundCount + 2 2023/1/28 上午1:48:03
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 2 2023/1/28 上午1:48:03
+Loop end ... exit
+You need to get json data first by calling getJson()
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 3 2023/1/28 上午1:48:08
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 3 2023/1/28 上午1:48:13
+An Error occured. Retry after 5 seconds. Retry Counts: 3 Outer Round Counts: 3 2023/1/28 上午1:48:18
+RoundCount + 3 2023/1/28 上午1:48:23
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 3 2023/1/28 上午1:48:23
+Loop end ... exit
+You need to get json data first by calling getJson()
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 4 2023/1/28 上午1:48:28
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 4 2023/1/28 上午1:48:33
+An Error occured. Retry after 5 seconds. Retry Counts: 3 Outer Round Counts: 4 2023/1/28 上午1:48:38
+RoundCount + 4 2023/1/28 上午1:48:43
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 4 2023/1/28 上午1:48:43
+Loop end ... exit
+You need to get json data first by calling getJson()
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 5 2023/1/28 上午1:48:48
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 5 2023/1/28 上午1:48:53
+An Error occured. Retry after 5 seconds. Retry Counts: 3 Outer Round Counts: 5 2023/1/28 上午1:48:58
+RoundCount + 5 2023/1/28 上午1:49:03
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 5 2023/1/28 上午1:49:03
+Loop end ... exit
+You need to get json data first by calling getJson()
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 6 2023/1/28 上午1:49:08
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 6 2023/1/28 上午1:49:13
+An Error occured. Retry after 5 seconds. Retry Counts: 3 Outer Round Counts: 6 2023/1/28 上午1:49:18
+RoundCount + 6 2023/1/28 上午1:49:23
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 6 2023/1/28 上午1:49:23
+Loop end ... exit
+You need to get json data first by calling getJson()
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 7 2023/1/28 上午1:49:28
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 7 2023/1/28 上午1:49:33
+An Error occured. Retry after 5 seconds. Retry Counts: 3 Outer Round Counts: 7 2023/1/28 上午1:49:38
+RoundCount + 7 2023/1/28 上午1:49:43
+An Error occured. Retry after 5 seconds. Retry Counts: 0 Outer Round Counts: 7 2023/1/28 上午1:49:43
+Loop end ... exit
+You need to get json data first by calling getJson()
+An Error occured. Retry after 5 seconds. Retry Counts: 1 Outer Round Counts: 8 2023/1/28 上午1:49:48
+An Error occured. Retry after 5 seconds. Retry Counts: 2 Outer Round Counts: 8 2023/1/28 上午1:49:58

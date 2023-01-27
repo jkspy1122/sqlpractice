@@ -22,25 +22,26 @@ class apiCollection {
     }
     
     async getJson() {
-        this.jsonData = await (await fetch(this.api)).json();
-        // console.log(this.jsonData);
+        let success = false;
+        let retryCounts = 0;
+        let maxRetries = 4;
+        let timeLag = 5000
+        while(!success && retryCounts < maxRetries) {
+            try {
+                this.jsonData = await (await fetch(this.api)).json();
+                success = true;
+            } catch(e) {
+                console.log('----An Error occured while fetching json data from remote host. Retry after 5 seconds. Retry Counts: ' + retryCounts + " Outer Round Counts: " + aa + " ---- " + (new Date().toLocaleString()) + " ---- ")
+                await new Promise(resolve => setTimeout(resolve, timeLag)); //add timelag
+                retryCounts++; //try 5 times no success then give up -> 無條件 return this.jsonData
+            }
+        }
         return this.jsonData;
     }
     
-    async saveKlinedata() {
-        if (this.jsonData === null) {
-            console.log("You need to get json data first by calling getJson()");
-            return;
-        }
-        // console.log(typeof(this.jsonData));
-        let finalData = this.jsonData.map(d => {
-            return {time:d[0]/1000,open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
-          });
-        // console.log(finalData);
-    }
-
     //check exchange info for latest ticker and save to var
     async saveExchangeInfo() {
+        //check if parsed json data is passed.
         if (this.jsonData === null) {
             console.log("You need to get json data first by calling getJson()");
             return;
@@ -61,16 +62,36 @@ class apiCollection {
                 });
             }
         }
-        console.log(previousTickers);
-        //compare latestTickers,previousTickers. Mark de-listed tickers from Database and remove de-listed symbol from previousTickers
-        const latestTickers = [];
-        for (var i = 0; i < this.jsonData.symbols.length; i++) {
-            if (this.jsonData.symbols[i].contractType === "PERPETUAL") {
-                latestTickers.push(this.jsonData.symbols[i].symbol);
+        //check all tickers with status='SETTLING'. Ignored if already exist in deListedTicker
+        //Mark status='SETTLING' for newly found de-listed ticker from Database and remove de-listed symbol from previousTickers and pop from previousTickers
+        for (var i = 0 ; i < this.jsonData.symbols.length; i++) {
+            if (this.jsonData.symbols[i].contractType === "PERPETUAL" && this.jsonData.symbols[i].status === "SETTLING" && !deListedTicker.includes(this.jsonData.symbols[i].symbol)) {
+                deListedTicker.push(this.jsonData.symbols[i].symbol);
+                previousTickers.splice(previousTickers.indexOf(this.jsonData.symbols[i].symbol),1);
+                var symbol = this.jsonData.symbols[i].symbol;
+                var status = this.jsonData.symbols[i].status;
+                //Sql Prepared Statement
+                var sql = `UPDATE exchangetickers SET listingStatus= '${status}' WHERE symbol = '${symbol}'`;
+                pool.query(sql, function (err, result) {
+                    if (err) throw err;
+                    // console.log("1 record inserted");
+                });
+                console.log('found 1 de-listed ticker. Database records updated. (ticker: ' + symbol + ')');
             }
         }
-        console.log(latestTickers);
-        return latestTickers;
+    }
+
+    //Save parsed kline data to array finalData
+    async saveKlinedata() {
+        if (this.jsonData === null) {
+            console.log("You need to get json data first by calling getJson()");
+            return;
+        }
+        // console.log(typeof(this.jsonData));
+        let finalData = this.jsonData.map(d => {
+            return {time:d[0]/1000,open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
+          });
+        // console.log(finalData);
     }
 }
 
@@ -84,7 +105,9 @@ if (previousTickers == 0) {
                     previousTickers.push(results[i].symbol);
                 }
             }
-            console.log('load from database.... '+previousTickers);
+            console.log('Init process... loading previousTickers from database.... ');
+            console.log(previousTickers);
+            console.log('---------------------------------------------------------------');
         });
 }
 
@@ -98,19 +121,28 @@ if (deListedTicker == 0) {
                     deListedTicker.push(results[i].symbol);
                 }
             }
-            console.log('deListedTicker load from database.... '+deListedTicker);
+            console.log('Init process... loading deListedTicker from database.... ');
+            console.log(deListedTicker);
+            console.log('---------------------------------------------------------------');
         });
 }
+//main function of saveExchangeInfo. use 'setInterval(fetchData,yourTimeLag);' to start looping process.
+var aa = 0
+async function fetchData() {
+    console.log('----Total check counts: ' + aa + " ---- " + (new Date().toLocaleString()) + " ---- ");
+    apiExchangeInfo.getJson().then(
+        () => {
+            apiExchangeInfo.saveExchangeInfo();
+            aa++;
+        }
+    )
+}
 
+
+//API參數區
 const apiExchangeInfo = new apiCollection("https://fapi.binance.com/fapi/v1/exchangeInfo");
 const apiKline = new apiCollection("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=1000");
 const apiInterestRate = new apiCollection("https://fapi.binan");
 
 
-setInterval(() => {
-    apiExchangeInfo.getJson().then(
-        () => {
-        apiExchangeInfo.saveExchangeInfo();
-    }
-    )
-},5000);
+setInterval(fetchData,60000);
