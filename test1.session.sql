@@ -16,10 +16,8 @@ CREATE TABLE exchangeTickers (
 )
 
 --@block
-INSERT INTO exchangeTickers (symbol,baseAsset,quoteAsset,listingStatus);
-values ('BTCUSDT','BTC','USDT','TRADING');
-
--- VALUES ('ETHUSDT','ETH','USDT','trading'),('APTUSDT','APT','USDT','trading') --
+INSERT INTO exchangeTickers (symbol,baseAsset,quoteAsset,listingStatus)
+values ('BTCUSDT','BTC','USDT','TRADING')
 
 --@block
 SELECT listingStatus,symbol FROM exchangeTickers;
